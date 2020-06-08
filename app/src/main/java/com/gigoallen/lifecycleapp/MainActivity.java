@@ -1,5 +1,7 @@
 package com.gigoallen.lifecycleapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +31,21 @@ public class MainActivity extends AppCompatActivity {
     private Button.OnClickListener myListener = new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
+
+            switch (v.getId()){
+                case R.id.btnDial:
+                    Uri uri = Uri.parse("tel: 09881234666");
+                    Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+                    startActivity(intent);
+                    break;
+                case R.id.btnSecond:
+                    Intent intent1 = new Intent(MainActivity.this, SecondActivity.class);
+                    startActivity(intent1);
+                    break;
+                case R.id.btnFinish:
+                    finish();
+                    break;
+            }
 
         }
     };
